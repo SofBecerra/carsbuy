@@ -1,0 +1,9 @@
+<%= simple_form_for @car do | f |%>
+  <%= f.input :brand %>
+  <%= f.input :year %>
+  <%= f.input :color %>
+  <%= f.input :price %>
+  <%= f.input :information %>
+  <%= f.hidden_field :user_id, value: current_user %>
+  <%= f.submit %>
+<% end %>
