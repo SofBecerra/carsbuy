@@ -1,3 +1,4 @@
+
 <h2 class="row m-3 justify-content-center"> ¿Que carro quieres vender?</h2>
 <div class="row m-1">
 <div class="col-12 col-lg-4 justify-content-between">
@@ -20,6 +21,7 @@
       <%= f.input :color %>
       <%= f.input :price %>
       <%= f.input :information %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit "new car", class: "btn btn-primary w-100" %>
     <% end %>
   </div>

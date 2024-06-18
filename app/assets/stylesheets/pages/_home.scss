@@ -1,1 +1,30 @@
-// Specific CSS for your home-page
+// // Specific CSS for your home-page
+.Contenedor-Principal {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  //margin-left: 40px;
+  
+
+}
+
+.botones-searchbar {
+  display: flex;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-right: -40px;
+}
+
+.botones-searchbar a {
+  margin-right: 10px;
+}
+
+.contenedor-autos {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+
+}
