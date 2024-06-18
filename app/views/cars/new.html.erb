@@ -1,8 +1,43 @@
-<%= simple_form_for @car do |f|%>
-  <%= f.input :brand %>
-  <%= f.input :year %>
-  <%= f.input :color %>
-  <%= f.input :price %>
-  <%= f.input :information %>
-  <%= f.submit %>
-<% end %>
+<h2 class="row m-3 justify-content-center"> ¿Que carro quieres vender?</h2>
+<div class="row m-1">
+<div class="col-12 col-lg-4 justify-content-between">
+  <img height="200" width="2500" class="card-img-top" src="https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-2545xM4RIyFnbm9Mb3AgyyIJrjG0suyJRBODlsrjGpuaprQbhSIqppglBgR5HJl384MlficYiGHqoQxYLW7%25f3tiJ0PCJirQbLDWcQW7%251u2DJqoQh47wMvcYi967rfMb3islBglUbv8cRScHJwzMbnMdo13yJGy536nrQ%25r9RXHW8zWuEUQqogqaFQ8l3ilUj80cRScH7e7MbnMd0zqyJGy5BOKrQ%25r9Yp9W8zWunJHqogqaGQFl3ilU%25FjcRScHzjgMbnMdgsSyJGy5ic0rQ%25r9snYW8zWuKbGqogqaDJKl3ilUCQIcRScH4%25bMbnMdJmSyJGy5Q3drQ%25r98R9W8zWuobSqogqa3GIl3ilUR%25gcRScHbU8MbnMdJbkyJGy5Q4ErQ%25r993nW8zWuu3HqogqaaUbl3ilUUvmcRScHHwoMbnMddVHyJGy55OQrQbBUq2rjGLqryJR5GlJirjGNY3QcNQBUJ1">
+  </div>
+  <div class="col-12 col-lg-4 ">
+  <img height="200" width="250" class="card-img-top" src="https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-2545xM4RIyFnbm9Mb3AgyyIJrjG0suyJRBODlsrjGpuaprQbhSIqppglBgR5HJl384MlficYiGHqoQxYLW7%25f3tiJ0PCJirQbLDWcQW7%251u2DJqoQh47wMvcYi967rfMb3islBglUbv8cRScHJwzMbnMdo13yJGy536nrQ%25r9RXHW8zWuEUQqogqaFQ8l3ilUj80cRScH7e7MbnMd0zqyJGy5BOKrQ%25r9Yp9W8zWunJHqogqaGQFl3ilU%25FjcRScHzjgMbnMdgsSyJGy5ic0rQ%25r9snYW8zWuKbGqogqaDJKl3ilUCQIcRScH4%25bMbnMdJmSyJGy5Q3drQ%25r98R9W8zWuobSqogqa3GIl3ilUR%25gcRScHbU8MbnMdJbkyJGy5Q4ErQ%25r993nW8zWuu3HqogqaaUbl3ilUUvmcRScHHwoMbnMddVHyJGy55OQrQbBUq2rjGLqryJR5GlJirjGNY3QcNQBUJ1">
+  </div>
+  <div class="col-12 col-lg-4 ">
+  <img height="200" width="250" class="card-img-top" src="https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-2545xM4RIyFnbm9Mb3AgyyIJrjG0suyJRBODlsrjGpuaprQbhSIqppglBgR5HJl384MlficYiGHqoQxYLW7%25f3tiJ0PCJirQbLDWcQW7%251u2DJqoQh47wMvcYi967rfMb3islBglUbv8cRScHJwzMbnMdo13yJGy536nrQ%25r9RXHW8zWuEUQqogqaFQ8l3ilUj80cRScH7e7MbnMd0zqyJGy5BOKrQ%25r9Yp9W8zWunJHqogqaGQFl3ilU%25FjcRScHzjgMbnMdgsSyJGy5ic0rQ%25r9snYW8zWuKbGqogqaDJKl3ilUCQIcRScH4%25bMbnMdJmSyJGy5Q3drQ%25r98R9W8zWuobSqogqa3GIl3ilUR%25gcRScHbU8MbnMdJbkyJGy5Q4ErQ%25r993nW8zWuu3HqogqaaUbl3ilUUvmcRScHHwoMbnMddVHyJGy55OQrQbBUq2rjGLqryJR5GlJirjGNY3QcNQBUJ1">
+  </div>
+
+</div>
+
+<div class="row m-5">
+  <div class="col-12 col-lg-6 shadow border mt-5 p-3">
+    <%= simple_form_for @car do |f|%>
+      <%= f.input :brand %>
+      <%= f.input :year %>
+      <%= f.input :color %>
+      <%= f.input :price %>
+      <%= f.input :information %>
+      <%= f.submit "new car", class: "btn btn-primary w-100" %>
+    <% end %>
+  </div>
+  <div class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+    <h3 class="text-center mb-4">Beneficios</h3>
+    <ul class="list-unstyled text-center">
+      <h4 class="mb-5">
+        <img height="50" width="50" src="https://st2.depositphotos.com/1431107/6019/v/450/depositphotos_60191935-stock-illustration-secure-shopping-icon.jpg" class="mr-3">
+        Compra segura
+      </h4>
+      <h4 class="mb-5">
+        <img height="50" width="50" src="https://st2.depositphotos.com/1431107/6019/v/450/depositphotos_60191935-stock-illustration-secure-shopping-icon.jpg" class="mr-3">
+        Pago confiable
+      </h4>
+      <h4 class="mb-5">
+        <img height="50" width="50" src="https://st2.depositphotos.com/1431107/6019/v/450/depositphotos_60191935-stock-illustration-secure-shopping-icon.jpg" class="mr-3">
+        Pago garantizado
+      </h4>
+    </ul>
+  </div>
+</div>
