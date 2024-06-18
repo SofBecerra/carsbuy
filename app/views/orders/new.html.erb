@@ -1,7 +1,5 @@
-<%= simple_form_for @order do | f |%>
+<%= simple_form_for [@car, @order], url: car_orders_path do | f |%>
   <%= f.input :purchase_date %>
   <%= f.input :price %>
-  <%= f.hidden_field :user_id, value: current_user %>
-  <%= f.hidden_field  :car_id, value: current_car %>
   <%= f.submit %>
 <% end %>

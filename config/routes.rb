@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
    root to: "cars#index"
   resources :cars do
-    resources :orders, only: [:new,:create]
+    resources :orders, only: [:new, :create]
   end
-    resources :orders, except: [:new,:create]
+    resources :orders, only: [:destroy]
 end

@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   # We need @restaurant in our `simple_form_for`
 
   def index
@@ -19,7 +20,7 @@ class CarsController < ApplicationController
     if @car.save
       redirect_to car_path(@car)
     else
-      render :new,status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -45,6 +46,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:brand, :color, :information, :price, :year, :user_id)
+    params.require(:car).permit(:brand, :color, :information, :price, :year)
   end
 end
