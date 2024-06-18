@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @car = Car.find(params[:car_id])
   end
 
   def create
