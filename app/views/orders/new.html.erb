@@ -1,5 +1,38 @@
-<%= simple_form_for [@car, @order], url: car_orders_path do | f |%>
-  <%= f.input :purchase_date %>
-  <%= f.input :price %>
-  <%= f.submit "Create order test" %>
-<% end %>
+<h2 class="row m-4 justify-content-center">Ordena el carro de tus sueños</h2>
+
+<div class="row m-3 d-flex justify-content-center">
+  <div class="col-12 col-lg-4">
+    <%= cl_image_tag @car.photos.last.key %>   
+  </div>
+</div>
+
+<div class="row align-items-stretch">
+  <div class="col-md-6 h-100">
+    <div class="shadow border p-3 h-100">
+      <%= simple_form_for [@car, @order], url: car_orders_path do |f|%>
+        <%= f.input :purchase_date %>
+        <%= f.input :price %>
+        <%= f.submit "New Order", class: "btn btn-primary w-100" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-6 h-100">
+    <div class="bg-light p-4 rounded h-100">
+      <h5 class="text-center mb-4">Debes seguir los siguientes pasos:</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>1. Elige la fecha
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>Indica el precio
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>Crea la orden
+        </li>
+        <li class="mb-2">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>Un agente de ventas te contactará
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
