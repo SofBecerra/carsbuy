@@ -1,40 +1,60 @@
+# db/seeds.rb
+
+require 'open-uri'
+
+# Destruir todos los registros previos
 Car.destroy_all
 User.destroy_all
 
-cars = [
-  { brand: 'Toyota', model: 'Toyota Corolla', year: 2015, kms: 46911, price: 20000, color: 'Rojo', information: 'Este auto tiene 46911 kms. Razones para comprarlo: confiabilidad, eficiencia en el consumo de combustible, y bajo costo de mantenimiento.', imagen1: 'imagen1_1.jpg', imagen2: 'imagen1_2.jpg' },
-  { brand: 'Honda', model: 'Honda Civic', year: 2018, kms: 4118, price: 22500, color: 'Azul', information: 'Este auto tiene 4118 kms. Razones para comprarlo: diseño moderno, rendimiento eficiente y alta seguridad.', imagen1: 'imagen2_1.jpg', imagen2: 'imagen2_2.jpg' },
-  { brand: 'Ford', model: 'Ford Focus', year: 2017, kms: 45948, price: 23000, color: 'Negro', information: 'Este auto tiene 45948 kms. Razones para comprarlo: manejo ágil, tecnología avanzada y diseño atractivo.', imagen1: 'imagen3_1.jpg', imagen2: 'imagen3_2.jpg' },
-  { brand: 'Chevrolet', model: 'Chevrolet Malibu', year: 2019, kms: 1257, price: 25000, color: 'Blanco', information: 'Este auto tiene 1257 kms. Razones para comprarlo: espacioso interior, comodidad y gran desempeño.', imagen1: 'imagen4_1.jpg', imagen2: 'imagen4_2.jpg' },
-  { brand: 'BMW', model: 'BMW Serie 3', year: 2020, kms: 29322, price: 28000, color: 'Gris', information: 'Este auto tiene 29322 kms. Razones para comprarlo: lujo, rendimiento deportivo y tecnología innovadora.', imagen1: 'imagen5_1.jpg', imagen2: 'imagen5_2.jpg' },
-  { brand: 'Toyota', model: 'Toyota Camry', year: 2016, kms: 36111, price: 22000, color: 'Rojo', information: 'Este auto tiene 36111 kms. Razones para comprarlo: rendimiento confiable, espacio interior y alta eficiencia de combustible.', imagen1: 'imagen6_1.jpg', imagen2: 'imagen6_2.jpg' },
-  { brand: 'Honda', model: 'Honda Accord', year: 2018, kms: 5118, price: 23500, color: 'Azul', information: 'Este auto tiene 5118 kms. Razones para comprarlo: diseño elegante, interior cómodo y buen rendimiento.', imagen1: 'imagen7_1.jpg', imagen2: 'imagen7_2.jpg' },
-  { brand: 'Ford', model: 'Ford Fusion', year: 2017, kms: 35948, price: 24000, color: 'Negro', information: 'Este auto tiene 35948 kms. Razones para comprarlo: buen manejo, tecnología avanzada y diseño moderno.', imagen1: 'imagen8_1.jpg', imagen2: 'imagen8_2.jpg' },
-  { brand: 'Chevrolet', model: 'Chevrolet Impala', year: 2019, kms: 2257, price: 27000, color: 'Blanco', information: 'Este auto tiene 2257 kms. Razones para comprarlo: espacioso, confortable y buen rendimiento.', imagen1: 'imagen9_1.jpg', imagen2: 'imagen9_2.jpg' },
-  { brand: 'BMW', model: 'BMW Serie 5', year: 2020, kms: 19322, price: 30000, color: 'Gris', information: 'Este auto tiene 19322 kms. Razones para comprarlo: lujo, tecnología avanzada y gran desempeño.', imagen1: 'imagen10_1.jpg', imagen2: 'imagen10_2.jpg' }
-]
-
-cars.each do |car|
-  Car.create!(car)
-end
-
-puts "#{cars.count} cars created"
-
+# Crear usuarios
 users = [
-  { name: 'María', last_name: 'Flores', email: 'maría.flores@gmail.com', password: '662818' },
-  { name: 'José', last_name: 'González', email: 'josé.gonzález@hotmail.com', password: '453531' },
-  { name: 'Luis', last_name: 'González', email: 'luis.gonzález@yahoo.com', password: '877552' },
-  { name: 'José', last_name: 'Martínez', email: 'josé.martínez@hotmail.com', password: '998197' },
-  { name: 'Carlos', last_name: 'Flores', email: 'carlos.flores@yahoo.com', password: '535966' },
-  { name: 'Ana', last_name: 'Pérez', email: 'ana.pérez@gmail.com', password: '342251' },
-  { name: 'Laura', last_name: 'Gómez', email: 'laura.gómez@hotmail.com', password: '734562' },
-  { name: 'Juan', last_name: 'Díaz', email: 'juan.díaz@yahoo.com', password: '482190' },
-  { name: 'Pedro', last_name: 'López', email: 'pedro.lópez@gmail.com', password: '625891' },
-  { name: 'Sofía', last_name: 'Martínez', email: 'sofia.martínez@gmail.com', password: '978431' }
+  { first_name: "Juan", last_name: "Perez", email: 'juan.perez@example.com', password: '123456', rating: 4 },
+  { first_name: "Ana", last_name: "Gomez", email: 'ana.gomez@example.com', password: '234567', rating: 5 },
+  { first_name: "Luis", last_name: "Martinez", email: 'luis.martinez@example.com', password: '345678', rating: 3 },
+  { first_name: "Carmen", last_name: "Lopez", email: 'carmen.lopez@example.com', password: '456789', rating: 4 },
+  { first_name: "Miguel", last_name: "Hernandez", email: 'miguel.hernandez@example.com', password: '567890', rating: 5 }
 ]
 
-users.each do |user|
-  User.create!(user)
+users.each do |user_data|
+  User.create!(user_data)
 end
 
 puts "#{users.count} users created"
+
+# Obtener todos los usuarios creados
+created_users = User.all
+
+# Crear autos y asignarlos a los usuarios
+cars = [
+  { brand: "Toyota", year: 2015, price: 20000, color: "Rojo", information: "Toyota Corolla, excelente estado, único dueño.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746514/imagen1_1_hs6del.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746758/imagen1_2_saitev.webp"] },
+  { brand: "Honda", year: 2018, price: 22500, color: "Azul", information: "Honda Civic, bajo kilometraje, todas las revisiones al día.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746762/imagen2_1_fh9hpq.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746768/imagen2_2_hktuaq.webp"] },
+  { brand: "Ford", year: 2017, price: 23000, color: "Negro", information: "Ford Focus, perfecto para la ciudad, muy económico.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746773/imagen3_1_hlnehr.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746778/imagen3_2_s4w3wd.webp"] },
+  { brand: "Chevrolet", year: 2019, price: 25000, color: "Blanco", information: "Chevrolet Malibu, amplio y cómodo, ideal para familias.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746782/imagen4_1_iveicg.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718746959/imagen4_2_ykqbda.webp"] },
+  { brand: "BMW", year: 2020, price: 28000, color: "Gris", information: "BMW Serie 3, lujo y potencia en un solo paquete.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747231/imagen5_1_cm5raj.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747246/imagen5_2_v0vza0.webp"] },
+  { brand: "Audi", year: 2016, price: 27000, color: "Verde", information: "Audi A4, diseño elegante y gran rendimiento.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747252/imagen6_1_fstoiq.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747258/imagen6_2_xrlcpi.webp"] },
+  { brand: "Mercedes", year: 2015, price: 30000, color: "Amarillo", information: "Mercedes Benz C-Class, seguridad y confort de alta gama.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747265/imagen7_1_bjoyqu.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747270/imagen7_2_iskiba.webp"] },
+  { brand: "Volkswagen", year: 2018, price: 24000, color: "Naranja", information: "Volkswagen Jetta, buen rendimiento de combustible.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747275/imagen8_1_dvfgkl.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747281/imagen8_2_tlsvzu.webp"] },
+  { brand: "Nissan", year: 2017, price: 22000, color: "Plateado", information: "Nissan Altima, diseño moderno y tecnología avanzada.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747287/imagen9_1_gyqos6.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747292/imagen9_2_hw8ase.webp"] },
+  { brand: "Kia", year: 2020, price: 26000, color: "Morado", information: "Kia Forte, confiable y económico, ideal para jóvenes.", photos: ["https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747411/imagen10_1_lh4huo.webp", "https://res.cloudinary.com/dpqwlencu/image/upload/e_background_removal/f_png/v1718747442/imagen10_2_zxdvcg.webp"] }
+]
+
+cars.each do |car_data|
+  user = created_users.sample
+  car = Car.new(
+    brand: car_data[:brand],
+    year: car_data[:year],
+    price: car_data[:price],
+    color: car_data[:color],
+    information: car_data[:information],
+    user: user
+  )
+
+  if car.save
+    car_data[:photos].each do |photo_url|
+      downloaded_image = URI.open(photo_url)
+      car.photos.attach(io: downloaded_image, filename: File.basename(URI.parse(photo_url).path))
+    end
+  end
+end
+
+puts "#{cars.count} cars created"
