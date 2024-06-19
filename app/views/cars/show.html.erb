@@ -1,0 +1,17 @@
+
+<div class="row m-5">
+  <div class="col-12 col-lg-2">
+  </div>
+  <div class="col-12 col-lg-6">
+    <%= cl_image_tag @car.photos.last.key %>
+  </div>
+    <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
+    <div class="rounded-lg border border-secondary p-4">
+    <div><h6><%= @car.year%>   |  <%= @car.color %>     <i class=" justify-content-right bi bi-heart"></i></h6> </div>
+    <div><h2><%= @car.brand %></h2></div>
+    <h4>$ <%= @car.price %></h4>
+    <p>Informacion <%= @car.information %></p>
+    <%= link_to 'Comprar', new_car_order_path(@car) , class: "btn btn-secondary w-100" %>
+    </div>
+  </div>
+</div>
