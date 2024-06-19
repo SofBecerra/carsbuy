@@ -42,21 +42,23 @@ Esto es un Test
     </div>
   </div>
 
-  <div class="contenedor-autos mt-4">
-    <h2>Autos Disponibles</h2>
-    <div class="row">
+<div class="contenedor-autos mt-4">
+  <h2>Autos Disponibles</h2>
+  <div class="row">
+    <% @cars.last(4).each do |car| %>
       <div class="col-md-3 mb-3">
-        <div class="card">
+        <div class="card h-100 border-rounded">
           <div class="card-body">
-            <h5 class="card-title">Opción 1</h5>
-            <p class="card-text">Descripción corta del auto opción 1.</p>
-            <a href="#" class="btn btn-primary btn-block">Ver más</a>
+            <h5 class="card-title"><%= car.brand %></h5>
+            <p class="card-text"><%= car.information %></p>
+            <p class="card-text"><%= car.year %></p>
+            <%= link_to "Ver Auto", car_path(car), class: "btn btn-primary btn-block" %>
           </div>
         </div>
       </div>
-
-        </div>
-      </div>
+    <% end %>
+  </div>
+</div>
 
 
         </div>
