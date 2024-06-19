@@ -1,9 +1,18 @@
 
 <div class="row m-5">
-  <div class="col-12 col-lg-2">
+  <div class="col-12 col-lg-2 ">
+    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
+      <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
+    </div>
+    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
+      <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
+    </div>
+    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
+    <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
+    </div>
   </div>
   <div class="col-12 col-lg-6">
-    <%= cl_image_tag @car.photos.last.key %>
+    <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
   </div>
     <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
     <div class="rounded-lg border border-secondary p-4">
@@ -15,3 +24,4 @@
     </div>
   </div>
 </div>
+
