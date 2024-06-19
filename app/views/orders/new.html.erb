@@ -1,38 +1,43 @@
 <h2 class="row m-4 justify-content-center">Ordena el carro de tus sueños</h2>
 
 <div class="row m-3 d-flex justify-content-center">
-  <div class="col-12 col-lg-4">
-    <%= cl_image_tag @car.photos.last.key %>   
+  <div class="text-center">
+    <%= cl_image_tag @car.photos.last.key, class: "rounded shadow", width: 400 %>
   </div>
 </div>
 
 <div class="row align-items-stretch">
   <div class="col-md-6 h-100">
     <div class="shadow border p-3 h-100">
+      <h5 class="text-center mb-4">Crea tu orden</h5>
       <%= simple_form_for [@car, @order], url: car_orders_path do |f|%>
-        <%= f.input :purchase_date %>
-        <%= f.input :price %>
-        <%= f.submit "New Order", class: "btn btn-primary w-100" %>
+        <%= f.input :purchase_date, label: "Fecha estimada de compra" %>
+        <%= f.input :price, label: "Precio" %>
+        <%= f.submit "Crear orden", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
   </div>
   <div class="col-md-6 h-100">
     <div class="bg-light p-4 rounded h-100">
-      <h5 class="text-center mb-4">Debes seguir los siguientes pasos:</h5>
-      <ul class="list-unstyled">
-        <li class="mb-2">
-          <i class="bi bi-check-circle-fill text-success me-2"></i>1. Elige la fecha
+      <h5 class="text-center mb-4">Sigue estos pasos:</h5>
+      <ol class="list-unstyled">
+        <li class="mb-3 d-flex align-items-center">
+          <span class="mr-3 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"> 1 </span>
+        Elige la fecha
         </li>
-        <li class="mb-2">
-          <i class="bi bi-check-circle-fill text-success me-2"></i>Indica el precio
+        <li class="mb-3 d-flex align-items-center">
+          <span class="mr-3 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"> 2 </span>
+        Indica el precio
         </li>
-        <li class="mb-2">
-          <i class="bi bi-check-circle-fill text-success me-2"></i>Crea la orden
+        <li class="mb-3 d-flex align-items-center">
+          <span class="mr-3 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"> 3 </span>
+        Crea la orden
         </li>
-        <li class="mb-2">
-          <i class="bi bi-check-circle-fill text-success me-2"></i>Un agente de ventas te contactará
+        <li class="mb-3 d-flex align-items-center">
+          <span class="mr-3 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 30px; height: 30px;"> 4 </span>
+        Un agente de ventas te contactará a la brevedad
         </li>
-      </ul>
+      </ol>
     </div>
   </div>
 </div>
