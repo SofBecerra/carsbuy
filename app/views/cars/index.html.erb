@@ -1,10 +1,7 @@
-Esto es un Test
-<%= link_to "newcar", new_car_path,class:"btn btn-primary"%>
+
   <div class="botones-searchbar col-6 d-flex">
-    <%= link_to "Crea tu cuenta", root_path, class: "btn btn-primary" %>
-    <%= link_to "Ayuda", root_path, class: "btn btn-primary" %>
     <%= link_to "Publica tu Vehiculo", new_car_path, class: "btn btn-primary" %>
-    <%= link_to "Lamborghini Gratis!", root_path, class: "btn btn-primary" %>
+    <%= link_to "Crea tu cuenta", new_user_session_path, class: "btn btn-primary" %>
   </div>
 </div>
 </div>
@@ -20,7 +17,7 @@ Esto es un Test
             <input class="form-control" type="text" name="search[query]" id="search_query" placeholder="Quiero mi Lamborghini...." />
             <div class="input-group-append">
               <button class="btn btn-primary" type="submit">
-                <i class="fas fa-search"></i> Search
+                <i class="fas fa-search"></i> Buscar
               </button>
             </div>
           </div>
@@ -42,30 +39,29 @@ Esto es un Test
     </div>
   </div>
 
-<div class="contenedor-autos mt-4">
-  <h2>Autos Disponibles</h2>
-  <div class="row">
-    <% @cars.last(4).each do |car| %>
-      <div class="col-md-3 mb-3">
-        <div class="card h-100 border-rounded">
-          <div class="card-body">
-            <h5 class="card-title"><%= car.brand %></h5>
-            <p class="card-text"><%= car.information %></p>
-            <p class="card-text"><%= car.year %></p>
-            <%= link_to "Ver Auto", car_path(car), class: "btn btn-primary btn-block" %>
+  <div class="contenedor-autos mt-4">
+    <h2>Autos Disponibles</h2>
+    <div class="row">
+      <% @cars.last(3).each do |car| %>
+        <%= link_to car_path(car), class: "col-4 mb-3" do %>
+          <div class="card " style="width: 300px; height: 300px;">
+            <% if car.photos.attached? %>
+              <%= image_tag car.photos.first, class: "card-img-top img-fluid" %>
+            <% else %>
+              <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= car.brand %></h5>
+              <p class="card-text"><%= car.information %></p>
+              <p class="card-text"><%= car.year %></p>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
+
 
 <div class="container bg-dark text-white mt-5 py-2">
   <div class="row">
