@@ -1,27 +1,31 @@
-
 <div class="row m-5">
-  <div class="col-12 col-lg-2 ">
-    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
-      <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
-    </div>
-    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
-      <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
-    </div>
-    <div class = "border border-secondary mb-3" style="width: 150px; height: 150px;" >
-    <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
+  <div class="col-12 col-lg-2">
+    <% if @car.photos.present? %>
+      <% 3.times do |i| %>
+        <% photo = @car.photos[i % @car.photos.size] %>
+        <div class="border border-secondary mb-3">
+          <%= cl_image_tag photo.key, class: "img-fluid" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-12 col-lg-6 d-flex justify-content-center">
+    <div class="mb-3">
+      <% if @car.photos.present? %>
+        <%= cl_image_tag @car.photos.last.key, class: "img-fluid" %>
+      <% end %>
     </div>
   </div>
-  <div class="col-12 col-lg-6">
-    <%= cl_image_tag @car.photos.last.key, class: "img-fluid"  %>
-  </div>
-    <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
-    <div class="rounded-lg border border-secondary p-4">
-    <div><h6><%= @car.year%>   |  <%= @car.color %>     <i class=" justify-content-right bi bi-heart"></i></h6> </div>
-    <div><h2><%= @car.brand %></h2></div>
-    <h4>$ <%= @car.price %></h4>
-    <p>Informacion <%= @car.information %></p>
-    <%= link_to 'Comprar', new_car_order_path(@car) , class: "btn btn-secondary w-100" %>
+  <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center">
+    <div class="rounded-lg border border-secondary p-4 text-center">
+      <div><h6><%= @car.year %> | <%= @car.color %> <i class="bi bi-heart"></i></h6></div>
+      <div><h2><%= @car.brand %></h2></div>
+      <h4>$ <%= @car.price %></h4>
+      <p>Información: <%= @car.information %></p>
+      <%= link_to 'Comprar', new_car_order_path(@car), class: "btn btn-secondary w-100 mt-3" %>
     </div>
   </div>
 </div>
+
+
 
