@@ -1,7 +1,13 @@
 class Car < ApplicationRecord
+  include PgSearch::Model
   belongs_to :user
   has_one :order
   has_many_attached :photos
+  pg_search_scope :search,
+                  against: %i[brand year color information],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   validates :brand, presence: true
   validates :year, presence: true
