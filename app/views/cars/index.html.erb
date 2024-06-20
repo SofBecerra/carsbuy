@@ -41,9 +41,9 @@
   </div>
 
 
-  <div class="contenedor-autos mt-4 mx-auto" style="max-width: 1500px;">
+ <div class="contenedor-autos mt-4 mx-auto" style="max-width: 1500px;">
     <h6>Autos Disponibles</h6>
-    <% @cars.last(6).each_slice(3) do |cars_group| %>
+    <% @cars.last(9).each_slice(3) do |cars_group| %>
         <div class="row mx-n3">
             <% cars_group.each do |car| %>
                 <%= link_to car_path(car), class: "col-12 col-sm-6 col-md-4 mb-3 text-decoration-none d-flex justify-content-center align-items-center" do %>
@@ -67,7 +67,6 @@
         </div>
     <% end %>
 </div>
-
 
 
 
