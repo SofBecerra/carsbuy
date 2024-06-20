@@ -4,22 +4,22 @@ require 'open-uri'
 
 # Destruir todos los registros previos
 Car.destroy_all
-User.destroy_all
+# User.destroy_all
 
 # Crear usuarios
-users = [
-  { first_name: "Juan", last_name: "Perez", email: 'juan.perez@example.com', password: '123456', rating: 4 },
-  { first_name: "Ana", last_name: "Gomez", email: 'ana.gomez@example.com', password: '234567', rating: 5 },
-  { first_name: "Luis", last_name: "Martinez", email: 'luis.martinez@example.com', password: '345678', rating: 3 },
-  { first_name: "Carmen", last_name: "Lopez", email: 'carmen.lopez@example.com', password: '456789', rating: 4 },
-  { first_name: "Miguel", last_name: "Hernandez", email: 'miguel.hernandez@example.com', password: '567890', rating: 5 }
-]
+#users = [
+  #{ first_name: "Juan", last_name: "Perez", email: 'juan.perez@example.com', password: '123456', rating: 4 },
+  #{ first_name: "Ana", last_name: "Gomez", email: 'ana.gomez@example.com', password: '234567', rating: 5 },
+  #{ first_name: "Luis", last_name: "Martinez", email: 'luis.martinez@example.com', password: '345678', rating: 3 },
+  #{ first_name: "Carmen", last_name: "Lopez", email: 'carmen.lopez@example.com', password: '456789', rating: 4 },
+  #{ first_name: "Miguel", last_name: "Hernandez", email: 'miguel.hernandez@example.com', password: '567890', rating: 5 }
+#]
 
-users.each do |user_data|
-  User.create!(user_data)
-end
+#users.each do |user_data|
+ # User.create!(user_data)
+#end
 
-puts "#{users.count} users created"
+#puts "#{users.count} users created"
 
 # Obtener todos los usuarios creados
 created_users = User.all
@@ -59,7 +59,7 @@ cars = [
 ]
 
 cars.each do |car_data|
-  user = created_users.sample
+  user = User.all.sample
   car = Car.new(
     brand: car_data[:brand],
     year: car_data[:year],
