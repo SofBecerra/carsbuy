@@ -30,8 +30,8 @@
 
 
 
-<div class="container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dpqwlencu/image/upload/v1/development/fqupyan9g6ivrn4aorhezb25ow5d.jpg?_a=BACCd2Bn'); background-size: cover; background-position: center; height: 200px;">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dpqwlencu/image/upload/v1/development/fqupyan9g6ivrn4aorhezb25ow5d.jpg?_a=BACCd2Bn'); background-size: cover; background-position: center; height: 325px;">
+
     <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center text-white">
       <h1>Autos a tu alcance! <strong>Facil</strong> de <strong>acceder</strong>!</h1>
       <p>Compra y/o Vende Ya!</p>
@@ -39,28 +39,33 @@
     </div>
   </div>
 
-  <div class="contenedor-autos mt-4">
-    <h2>Autos Disponibles</h2>
-    <div class="row">
-      <% @cars.last(3).each do |car| %>
-        <%= link_to car_path(car), class: "col-4 mb-3" do %>
-          <div class="card " style="width: 300px; height: 300px;">
-            <% if car.photos.attached? %>
-              <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
-            <% else %>
-              <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
+
+  <div class="contenedor-autos mt-4 mx-auto" style="max-width: 1500px;">
+    <h6>Autos Disponibles</h6>
+    <div class="row mx-n3">
+        <% @cars.last(3).each do |car| %>
+            <%= link_to car_path(car), class: "col-12 col-sm-6 col-md-4 mb-3 text-decoration-none d-flex justify-content-center align-items-center" do %>
+                <div class="card h-100" style="width: 450px; height: 450px;">
+                    <div class="p-5">
+                        <% if car.photos.attached? %>
+                              <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
+                        <% else %>
+                            <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
+                        <% end %>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-truncate"><strong><%= car.brand %></strong></h5>
+                        <p class="card-text text-truncate"><%= car.year %></p>
+                        <p class="card-text text-truncate"><%= car.price %></p>
+                        <p class="card-text text-truncate"><%= car.information %></p>
+                    </div>
+                </div>
+
             <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= car.brand %></h5>
-              <p class="card-text"><%= car.information %></p>
-              <p class="card-text"><%= car.year %></p>
-            </div>
-          </div>
         <% end %>
-      <% end %>
     </div>
-  </div>
 </div>
+
 
 
 <div class="container bg-dark text-white mt-5 py-2">
