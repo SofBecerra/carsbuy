@@ -36,7 +36,7 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-    redirect_to car_path(@order.car), status: :see_other
+    redirect_to car_path(@order.car), status: :see_other, notice: 'Auto creado correctamente'
   end
 
   private
