@@ -39,6 +39,7 @@
     </div>
   </div>
 
+
   <div class="contenedor-autos mt-4 mx-auto" style="max-width: 1500px;">
     <h6>Autos Disponibles</h6>
     <div class="row mx-n3">
@@ -47,7 +48,7 @@
                 <div class="card h-100" style="width: 450px; height: 450px;">
                     <div class="p-5">
                         <% if car.photos.attached? %>
-                            <%= image_tag car.photos.first, class: "card-img-top img-fluid" %>
+                              <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
                         <% else %>
                             <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
                         <% end %>
@@ -59,6 +60,7 @@
                         <p class="card-text text-truncate"><%= car.information %></p>
                     </div>
                 </div>
+
             <% end %>
         <% end %>
     </div>
