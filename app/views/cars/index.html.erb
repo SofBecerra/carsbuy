@@ -43,29 +43,31 @@
 
   <div class="contenedor-autos mt-4 mx-auto" style="max-width: 1500px;">
     <h6>Autos Disponibles</h6>
-    <div class="row mx-n3">
-        <% @cars.last(3).each do |car| %>
-            <%= link_to car_path(car), class: "col-12 col-sm-6 col-md-4 mb-3 text-decoration-none d-flex justify-content-center align-items-center" do %>
-                <div class="card h-100" style="width: 450px; height: 450px;">
-                    <div class="p-5">
-                        <% if car.photos.attached? %>
-                              <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
-                        <% else %>
-                            <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
-                        <% end %>
+    <% @cars.last(6).each_slice(3) do |cars_group| %>
+        <div class="row mx-n3">
+            <% cars_group.each do |car| %>
+                <%= link_to car_path(car), class: "col-12 col-sm-6 col-md-4 mb-3 text-decoration-none d-flex justify-content-center align-items-center" do %>
+                    <div class="card h-100" style="width: 450px; height: 450px;">
+                        <div class="p-5">
+                            <% if car.photos.attached? %>
+                                <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
+                            <% else %>
+                                <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
+                            <% end %>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate"><strong><%= car.brand %></strong></h5>
+                            <p class="card-text text-truncate"><%= car.year %></p>
+                            <p class="card-text text-truncate">$ <%= car.price %></p>
+                            <p class="card-text text-truncate"><%= car.information %></p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-truncate"><strong><%= car.brand %></strong></h5>
-                        <p class="card-text text-truncate"><%= car.year %></p>
-                        <p class="card-text text-truncate">$ <%= car.price %></p>
-                        <p class="card-text text-truncate"><%= car.information %></p>
-                    </div>
-                </div>
-
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>
+
 
 
 
