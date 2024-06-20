@@ -3,7 +3,11 @@ class CarsController < ApplicationController
   # We need @restaurant in our `simple_form_for`
 
   def index
-    @cars = Car.all
+    @cars = if params[:query].present?
+              Car.search(params[:query])
+            else
+              Car.all
+            end
   end
 
   def show

@@ -1,6 +1,6 @@
 
   <div class="botones-searchbar col-6 d-flex">
-    <%= link_to "Publica tu Vehiculo", new_car_path, class: "btn btn-primary" %>
+    <%= link_to "Publica tu Auto", new_car_path, class: "btn btn-primary" %>
     <%= link_to "Crea tu cuenta", new_user_session_path, class: "btn btn-primary" %>
   </div>
 </div>
@@ -12,16 +12,17 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="contenedor-buscador">
-        <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
-          <div class="input-group">
-            <input class="form-control" type="text" name="search[query]" id="search_query" placeholder="Quiero mi Lamborghini...." />
-            <div class="input-group-append">
-              <button class="btn btn-primary" type="submit">
-                <i class="fas fa-search"></i> Buscar
-              </button>
+                  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+            <div class="input-group">
+              <input class="form-control string required" type="text" name="query" id="search_query" placeholder="Quiero Mi Lamborghini" />
+              <div class="input-group-append">
+                <button name="button" type="submit" class="btn btn-primary">
+                  <i class="fas fa-search"></i> Buscar
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          <% end %>
+
       </div>
     </div>
   </div>
@@ -33,7 +34,7 @@
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dpqwlencu/image/upload/v1/development/fqupyan9g6ivrn4aorhezb25ow5d.jpg?_a=BACCd2Bn'); background-size: cover; background-position: center; height: 325px;">
 
     <div class="container h-100 d-flex flex-column justify-content-center align-items-center text-center text-white">
-      <h1>Autos a tu alcance! <strong>Facil</strong> de <strong>acceder</strong>!</h1>
+      <h1>¡Autos a tu alcance <strong>Fácil</strong> de <strong>acceder</strong>!</h1>
       <p>Compra y/o Vende Ya!</p>
       <a class="btn btn-flat" href="#"></a>
     </div>
@@ -56,7 +57,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-truncate"><strong><%= car.brand %></strong></h5>
                         <p class="card-text text-truncate"><%= car.year %></p>
-                        <p class="card-text text-truncate"><%= car.price %></p>
+                        <p class="card-text text-truncate">$ <%= car.price %></p>
                         <p class="card-text text-truncate"><%= car.information %></p>
                     </div>
                 </div>
@@ -68,7 +69,7 @@
 
 
 
-<div class="container bg-dark text-white mt-5 py-2">
+<div class="bg-dark text-white mt-5 py-2">
   <div class="row">
     <div class="col-md-6">
       <h5>Síguenos en nuestras redes sociales</h5>
