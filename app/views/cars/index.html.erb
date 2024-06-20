@@ -46,7 +46,7 @@
         <%= link_to car_path(car), class: "col-4 mb-3" do %>
           <div class="card " style="width: 300px; height: 300px;">
             <% if car.photos.attached? %>
-              <%= image_tag car.photos.first, class: "card-img-top img-fluid" %>
+              <%= cl_image_tag car.photos.first.key, class: "card-img-top img-fluid" %>
             <% else %>
               <%= image_tag "logo.png", class: "card-img-top img-fluid" %>
             <% end %>
