@@ -1,0 +1,9 @@
+<h1> tus ordenes</h1>
+
+<% current_user.orders.each do |order| %>
+    <h2><%= order.car.brand %></h2>
+            <p>Dueño: <%= order.car.user.first_name  %></p>
+            <p>Price: $<%= order.car.price %></p>
+            <p>Fecha: <%= order.created_at.strftime("%d %B %Y") %> | Hora: <%= order.created_at.strftime("%H:%M:%S") %></p>
+            <p><em>Order <%=order.id %></em></p>
+<% end %>
