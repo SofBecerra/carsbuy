@@ -1,9 +1,56 @@
-<h1> tus ordenes</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tus Órdenes</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-generico-marca_110488-502.jpg?w=1060") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .rounded-lg {
+      border-radius: 15px;
+    }
+    .border-secondary {
+      border-color: #6c757d;
+    }
+    .bg-translucent {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    }
+    h1, h2, h4, h5, h6 {
+      color: #343a40; /* Color gris oscuro */
+    }
+    p {
+      color: #495057; /* Color gris medio */
+    }
+    .order-container {
+      background: rgba(255, 255, 255, 0.7); /* Fondo blanco con transparencia */
+      border-radius: 15px;
+      padding: 1.5rem; /* Reducir el padding */
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+      max-width: 450px; /* Reducir el ancho máximo del contenedor */
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Tus Órdenes</h1>
 
-<% current_user.orders.each do |order| %>
-    <h2><%= order.car.brand %></h2>
-            <p>Dueño: <%= order.car.user.first_name  %></p>
-            <p>Price: $<%= order.car.price %></p>
-            <p>Fecha: <%= order.created_at.strftime("%d %B %Y") %> | Hora: <%= order.created_at.strftime("%H:%M:%S") %></p>
-            <p><em>Order <%=order.id %></em></p>
-<% end %>
+    <% current_user.orders.each do |order| %>
+      <div class="order-container">
+        <h2><%= order.car.brand %></h2>
+        <p>Dueño: <%= order.car.user.first_name %></p>
+        <p>Precio: $<%= order.car.price %></p>
+        <p>Fecha: <%= order.created_at.strftime("%d %B %Y") %> | Hora: <%= order.created_at.strftime("%H:%M:%S") %></p>
+        <p><em>Orden <%= order.id %></em></p>
+      </div>
+    <% end %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
