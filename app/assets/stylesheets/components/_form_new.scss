@@ -1,0 +1,41 @@
+    body {
+      background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-generico-marca_110488-502.jpg?w=1060") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    }
+    h2 {
+      color: #343a40; /* Color gris oscuro */
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #000; /* Botones negros */
+      border-color: #000; /* Botones negros */
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+      padding: 0.5rem 1.5rem; /* Espaciado interno del botón */
+    }
+    .btn-primary:hover {
+      background-color: #333; /* Color negro oscuro al pasar el mouse */
+      border-color: #333; /* Color negro oscuro al pasar el mouse */
+    }
+    .form-control {
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #495057;
+    }
+    .text-center {
+      font-size: 1.2rem; /* Tamaño de texto ligeramente mayor */
+      color: #6c757d;
+    }
+    @media (max-width: 576px) {
+      .col-md-6 {
+        padding: 0 15px;
+      }
+    }

@@ -1,35 +1,112 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit <%= resource_name.to_s.humanize %></title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <%# <style>
+    body {
+      background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-negro-moderno-generico-marca_110488-530.jpg?w=996") no-repeat center center fixed;
+      background-size: cover;
+      filter: grayscale(80%); /* Aplicar filtro en blanco y negro */
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+    }
+    h2, h3 {
+      color: #343a40; /* Color gris oscuro */
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background-color: #000; /* Botones negros */
+      border-color: #000; /* Botones negros */
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+      padding: 0.5rem 1.5rem; /* Espaciado interno del botón */
+    }
+    .btn-primary:hover {
+      background-color: #333; /* Color negro oscuro al pasar el mouse */
+      border-color: #333; /* Color negro oscuro al pasar el mouse */
+    }
+    .form-control {
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #495057;
+    }
+    .text-center {
+      font-size: 1.2rem; /* Tamaño de texto ligeramente mayor */
+      color: #6c757d;
+    }
+    .link-container {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .link-container a {
+      color: #007bff;
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .link-container a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 576px) {
+      .col-md-6 {
+        padding: 0 15px;
+      }
+    }
+  </style> %>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-start"> <!-- Cambiar justify-content-end a justify-content-start -->
+      <div class="col-md-6">
+        <div class="form-container my-5">
+          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true, input_html: { class: "form-control" } %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+              <%= f.input :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password", class: "form-control" } %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password", class: "form-control" } %>
+              <%= f.input :current_password,
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password", class: "form-control" } %>
+            </div>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+            <div class="form-actions">
+              <%= f.button :submit, "Update", class: "btn btn-primary btn-block" %>
+            </div>
+          <% end %>
+
+          <h3>Cancel my account</h3>
+          <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-block" %></div>
+
+          <%= link_to "Back", :back, class: "btn btn-secondary btn-block mt-3" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
