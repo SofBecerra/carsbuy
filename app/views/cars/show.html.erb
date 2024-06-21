@@ -41,7 +41,7 @@
           <% 3.times do |i| %>
             <% photo = @car.photos[i % @car.photos.size] %>
             <div class="border border-secondary mb-3">
-              <%= cl_image_tag photo.key, class: "img-fluid" %>
+              <%= cl_image_tag photo.key, class: "img-fluid small-photo", data: { key: photo.key } %>
             </div>
           <% end %>
         <% end %>
@@ -49,7 +49,7 @@
       <div class="col-12 col-lg-6 d-flex justify-content-center">
         <div class="mb-3">
           <% if @car.photos.present? %>
-            <%= cl_image_tag @car.photos.last.key, class: "img-fluid" %>
+            <%= cl_image_tag @car.photos.last.key, class: "img-fluid main-photo", id: "mainPhoto" %>
           <% end %>
         </div>
       </div>
@@ -67,5 +67,17 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const smallPhotos = document.querySelectorAll('.small-photo');
+      const mainPhoto = document.getElementById('mainPhoto');
+
+      smallPhotos.forEach(photo => {
+        photo.addEventListener('click', function() {
+          mainPhoto.src = this.src;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
