@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalle del Coche</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     body {
       background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-generico-marca_110488-502.jpg?w=1060") no-repeat center center fixed;
@@ -32,16 +26,14 @@
       border-color: #545b62; /* Bordes gris oscuro al pasar el mouse */
     }
   </style>
-</head>
-<body>
   <div class="container">
-    <div class="row m-5">
+    <div class="row m-5" data-controller="photo-gallery">
       <div class="col-12 col-lg-2">
         <% if @car.photos.present? %>
           <% 3.times do |i| %>
             <% photo = @car.photos[i % @car.photos.size] %>
             <div class="border border-secondary mb-3">
-              <%= cl_image_tag photo.key, class: "img-fluid small-photo", data: { key: photo.key } %>
+              <%= cl_image_tag photo.key, class: "img-fluid small-photo", data: { key: photo.key , action: "click->photo-gallery#changeImg"} %>
             </div>
           <% end %>
         <% end %>
@@ -49,7 +41,7 @@
       <div class="col-12 col-lg-6 d-flex justify-content-center">
         <div class="mb-3">
           <% if @car.photos.present? %>
-            <%= cl_image_tag @car.photos.last.key, class: "img-fluid main-photo", id: "mainPhoto" %>
+            <%= cl_image_tag @car.photos.last.key, class: "img-fluid ", id: "mainPhoto", data: {photo_gallery_target:"big"} %>
           <% end %>
         </div>
       </div>
@@ -64,20 +56,3 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const smallPhotos = document.querySelectorAll('.small-photo');
-      const mainPhoto = document.getElementById('mainPhoto');
-
-      smallPhotos.forEach(photo => {
-        photo.addEventListener('click', function() {
-          mainPhoto.src = this.src;
-        });
-      });
-    });
-  </script>
-</body>
-</html>
