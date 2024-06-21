@@ -1,0 +1,9 @@
+<h3><%= current_user.first_name %>! Estos son tus carros publicados </h3>
+
+<% current_user.cars.each do |car| %>
+    <h2><%= car.brand %></h2>
+            <p>Price: $<%= car.price %></p>
+            <p>Fecha: <%= car.created_at.strftime("%d %B %Y") %> | Hora: <%= car.created_at.strftime("%H:%M:%S") %></p>
+            <p><em>Order <%=car.id %></em></p>
+            <%= link_to 'Delete', car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger bi bi-trash3" %>
+<% end %>

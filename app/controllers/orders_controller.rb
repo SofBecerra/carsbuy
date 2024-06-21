@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     @order.car = @car
     @order.user = current_user
     if @order.save
-      redirect_to root_path, notice: "¡Orden creada con éxito! Un agente se pondrá en contacto contigo."
+      redirect_to my_orders_path, notice: "¡Orden creada con éxito! Un agente se pondrá en contacto contigo."
     else
       render :new, status: :unprocessable_entity
     end

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
     resources :orders, only: [:destroy]
    get "my_orders", to: "pages#my_orders", as: :my_orders
+   get "my_cars", to: "pages#my_cars", as: :my_cars
 end
