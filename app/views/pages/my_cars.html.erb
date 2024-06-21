@@ -1,9 +1,67 @@
-<h3><%= current_user.first_name %>! Estos son tus carros publicados </h3>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tus Carros Publicados</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+  <style>
+    body {
+      background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-generico-marca_110488-502.jpg?w=1060") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .rounded-lg {
+      border-radius: 15px;
+    }
+    .border-secondary {
+      border-color: #6c757d;
+    }
+    .bg-translucent {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: #343a40; /* Color gris oscuro */
+    }
+    p {
+      color: #495057; /* Color gris medio */
+    }
+    .car-container {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+      border-radius: 15px;
+      padding: 1.5rem; /* Reducir el padding */
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+      max-width: 450px; /* Reducir el ancho máximo del contenedor */
+    }
+    .btn-primary {
+      background-color: #000; /* Botones negros */
+      border-color: #000; /* Bordes negros */
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+      padding: 0.5rem 1.5rem; /* Espaciado interno del botón */
+    }
+    .btn-primary:hover {
+      background-color: #333; /* Color negro oscuro al pasar el mouse */
+      border-color: #333; /* Bordes negros oscuros al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h3 class="text-left mb-4"><%= current_user.first_name %>! Estos son tus carros publicados</h3>
 
-<% current_user.cars.each do |car| %>
-    <h2><%= car.brand %></h2>
-            <p>Price: $<%= car.price %></p>
-            <p>Fecha: <%= car.created_at.strftime("%d %B %Y") %> | Hora: <%= car.created_at.strftime("%H:%M:%S") %></p>
-            <p><em>Order <%=car.id %></em></p>
-            <%= link_to 'Delete', car_path(car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger bi bi-trash3" %>
-<% end %>
+    <% current_user.cars.each do |car| %>
+      <div class="car-container">
+        <h2><%= car.brand %></h2>
+        <p>Precio: $<%= car.price %></p>
+        <p>Fecha: <%= car.created_at.strftime("%d %B %Y") %> | Hora: <%= car.created_at.strftime("%H:%M:%S") %></p>
+        <p><em>Carro ID: <%= car.id %></em></p>
+        <%= link_to 'Eliminar', car_path(car), data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro?' }, class: "btn btn-primary bi bi-trash3" %>
+      </div>
+    <% end %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

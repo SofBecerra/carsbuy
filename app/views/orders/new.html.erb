@@ -1,54 +1,120 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Ordena el carro de tus sueños</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordena el carro de tus sueños</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: url("https://img.freepik.com/fotos-premium/vista-frontal-coche-generico-marca_110488-502.jpg?w=1060") no-repeat center center fixed;
+      background-size: cover;
+    }
+    .rounded-lg {
+      border-radius: 15px;
+    }
+    .border-secondary {
+      border-color: #6c757d;
+    }
+    .bg-translucent {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    }
+    h2, h4, h5, h6 {
+      color: #343a40; /* Color gris oscuro */
+    }
+    .btn-primary {
+      background-color: #000; /* Botones negros */
+      border-color: #000; /* Bordes negros */
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+      padding: 0.5rem 1.5rem; /* Espaciado interno del botón */
+    }
+    .btn-primary:hover {
+      background-color: #333; /* Color negro oscuro al pasar el mouse */
+      border-color: #333; /* Bordes negros oscuros al pasar el mouse */
+    }
+    .form-control {
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #495057;
+    }
+    .text-center {
+      font-size: 1.2rem; /* Tamaño de texto ligeramente mayor */
+      color: #6c757d;
+    }
+    .list-unstyled h4 {
+      color: #343a40; /* Color gris oscuro */
+    }
+    .list-unstyled img {
+      border-radius: 5px; /* Esquinas levemente redondeadas */
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    }
+    .rounded-circle {
+      border-radius: 50%;
+    }
+    @media (max-width: 576px) {
+      .col-md-6 {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Ordena el carro de tus sueños</h2>
 
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6 order-md-2">
-      <div class="card bg-light">
-        <div class="card-body">
-          <h5 class="card-title text-center mb-4">Crea tu orden</h5>
-          <%= simple_form_for [@car, @order], url: car_orders_path do |f| %>
-            <div class="mb-3">
-              <%# <%= f.input :purchase_date, label: "Fecha estimada de compra", input_html: { class: 'form-control' } %>
-            </div>
-            <div class="mb-3">
-              <%= f.input :price, as: :float, input_html: { min: 0 }, label: "Tu oferta ($)" %>
-            </div>
-            <div class="mb-3">
-              <p class="text-muted">Precio de venta: $<%= @car.price %></p>
-            </div>
-            <%= f.submit "Crear orden", class: "btn btn-primary w-100" %>
-          <% end %>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 order-md-2">
+        <div class="card bg-translucent shadow">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">Crea tu orden</h5>
+            <%= simple_form_for [@car, @order], url: car_orders_path do |f| %>
+              <div class="mb-3">
+                <%= f.input :price, as: :float, input_html: { min: 0, class: 'form-control' }, label: "Tu oferta ($)" %>
+              </div>
+              <div class="mb-3">
+                <p class="text-muted">Precio de venta: $<%= @car.price %></p>
+              </div>
+              <%= f.submit "Crear orden", class: "btn btn-primary w-100" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="card bg-translucent shadow mt-4">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-3">Sigue estos pasos:</h5>
+            <ol class="list-unstyled">
+              <li class="mb-2 d-flex align-items-center">
+                <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">1</span>
+                Elige la fecha
+              </li>
+              <li class="mb-2 d-flex align-items-center">
+                <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">2</span>
+                Indica tu oferta
+              </li>
+              <li class="mb-2 d-flex align-items-center">
+                <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">3</span>
+                Crea la orden
+              </li>
+              <li class="mb-2 d-flex align-items-center">
+                <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">4</span>
+                Un agente de ventas te contactará a la brevedad
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
 
-      <div class="card bg-light mt-4">
-        <div class="card-body">
-          <h5 class="card-title text-center mb-3">Sigue estos pasos:</h5>
-          <ol class="list-unstyled">
-            <li class="mb-2 d-flex align-items-center">
-              <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">1</span>
-              Elige la fecha
-            </li>
-            <li class="mb-2 d-flex align-items-center">
-              <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">2</span>
-              Indica tu oferta
-            </li>
-            <li class="mb-2 d-flex align-items-center">
-              <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">3</span>
-              Crea la orden
-            </li>
-            <li class="mb-2 d-flex align-items-center">
-              <span class="me-2 rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px; font-size: 0.8rem;">4</span>
-              Un agente de ventas te contactará a la brevedad
-            </li>
-          </ol>
-        </div>
+      <div class="col-12 col-md-8 col-lg-6">
+        <%= cl_image_tag @car.photos.last.key, class: "img-fluid rounded shadow", style: "max-width: 100%; height: auto;" %>
       </div>
-    </div>
-
-    <div class="col-12 col-md-8 col-lg-6">
-      <%= cl_image_tag @car.photos.last.key, class: "img-fluid rounded shadow", style: "max-width: 100%; height: auto;" %>
     </div>
   </div>
-
-</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
