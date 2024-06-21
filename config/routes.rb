@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users 
+  devise_for :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
     resources :orders, only: [:destroy]
+   get "my_orders", to: "pages#my_orders", as: :my_orders
 end

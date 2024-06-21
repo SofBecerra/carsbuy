@@ -19,6 +19,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:purchase_date, :price)
+    params.require(:order).permit( :price)
   end
 end
